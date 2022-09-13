@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 const theme = createTheme();
-var url = 'http://localhost:4000/';
+var url = 'https://data.mongodb-api.com/app/data-kdfoq/endpoint/data/v1/action/insertOne';
 
 
 export default function SignIn() {
@@ -27,25 +27,29 @@ export default function SignIn() {
         const data = new FormData(event.currentTarget);
         getemail = data.get('email')
         getpass = data.get('password')
-        var datas = {email: getemail, password: getpass};
+        var datas = {
+            "collection": "datos",
+            "database": "test",
+            "dataSource": "Cluster0",
+            "document": {
+                "email": getpass,
+                "password": getemail
+            }
+        };
 
         fetch(url, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(datas), // data can be `string` or {object}!
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Access-Control-Allow-Origin': '*',        
+                'Content-Type': 'application/json',
+                'Access-Control-Request-Headers': '*',
+                'api-key': 'udjuiTi2JL1nBTzQUGKIJ1QPCYBb6qE120QPSyMVdiIpUkDvAPJJkz4vVrZ5bmDW'
+            },
+            data: data
         }).then(res => res.json())
             .catch(error => console.error('Error:', error))
             .then(response => console.log('Success:', response));
-
-            fetch(url)
-            .then(response => {
-                return response.json();
-            })
-            .then(response => {
-                console.log(response);
-            })
     };
 
 
