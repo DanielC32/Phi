@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 const theme = createTheme();
-var url = 'https://data.mongodb-api.com/app/data-kdfoq/endpoint/data/v1/action/insertOne';
+var url = 'https://cors-anywhere.herokuapp.com/https://data.mongodb-api.com/app/data-kdfoq/endpoint/data/v1/action/insertOne';
 
 
 export default function SignIn() {
@@ -40,8 +40,7 @@ export default function SignIn() {
         fetch(url, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(datas), // data can be `string` or {object}!
-            headers: {
-                'Access-Control-Allow-Origin': '*',        
+            headers: {        
                 'Content-Type': 'application/json',
                 'Access-Control-Request-Headers': '*',
                 'api-key': 'udjuiTi2JL1nBTzQUGKIJ1QPCYBb6qE120QPSyMVdiIpUkDvAPJJkz4vVrZ5bmDW'
@@ -51,6 +50,8 @@ export default function SignIn() {
             .catch(error => console.error('Error:', error))
             .then(response => console.log('Success:', response));
     };
+
+    
 
 
     return (
