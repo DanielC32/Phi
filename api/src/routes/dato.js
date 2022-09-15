@@ -3,7 +3,7 @@ const router = express.Router();
 const datoSchema = require("../models/dato");
 
 //Agregar un documento
-router.post("", (req, res) => {
+router.post("/p", (req, res) => {
   const dato = datoSchema(req.body);
  dato
     .save()
@@ -12,7 +12,7 @@ router.post("", (req, res) => {
 });
 
 //Listar todos los documentos
-router.get("", (req, res) => {
+router.get("/g", (req, res) => {
  datoSchema.find()
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
