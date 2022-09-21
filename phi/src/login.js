@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 const theme = createTheme();
-var url = 'https://cors-anywhere.herokuapp.com/https://data.mongodb-api.com/app/data-kdfoq/endpoint/data/v1/action/insertOne';
+var url = 'https://apifinal01nodejs.herokuapp.com/p';
 
 
 export default function SignIn() {
@@ -28,13 +28,8 @@ export default function SignIn() {
         getemail = data.get('email')
         getpass = data.get('password')
         var datas = {
-            "collection": "datos",
-            "database": "test",
-            "dataSource": "Cluster0",
-            "document": {
-                "email": getpass,
-                "password": getemail
-            }
+                "email": getemail,
+                "password": getpass
         };
 
         fetch(url, {
@@ -43,16 +38,12 @@ export default function SignIn() {
             headers: {        
                 'Content-Type': 'application/json',
                 'Access-Control-Request-Headers': '*',
-                'api-key': 'udjuiTi2JL1nBTzQUGKIJ1QPCYBb6qE120QPSyMVdiIpUkDvAPJJkz4vVrZ5bmDW'
             },
             data: data
         }).then(res => res.json())
             .catch(error => console.error('Error:', error))
             .then(response => console.log('Success:', response));
-    };
-
-    
-
+    };  
 
     return (
         <ThemeProvider theme={theme}>
