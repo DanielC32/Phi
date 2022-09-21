@@ -13,12 +13,13 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-
 const theme = createTheme();
 var url = 'https://apifinal01nodejs.herokuapp.com/p';
 
 
 export default function SignIn() {
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -28,14 +29,14 @@ export default function SignIn() {
         getemail = data.get('email')
         getpass = data.get('password')
         var datas = {
-                "email": getemail,
-                "password": getpass
+            "email": getemail,
+            "password": getpass
         };
 
         fetch(url, {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(datas), // data can be `string` or {object}!
-            headers: {        
+            headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Request-Headers': '*',
             },
@@ -43,7 +44,7 @@ export default function SignIn() {
         }).then(res => res.json())
             .catch(error => console.error('Error:', error))
             .then(response => console.log('Success:', response));
-    };  
+    };
 
     return (
         <ThemeProvider theme={theme}>
@@ -91,15 +92,14 @@ export default function SignIn() {
                             control={<Checkbox value="remember" color="primary" />}
                             label="Remember me"
                         />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                        >
-                            Sign In
-                        </Button>
-
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2 }}
+                            >
+                                Sign In
+                            </Button>          
                         <Grid container>
                             <Grid item xs>
                                 <Link href="#" variant="body2">
@@ -116,8 +116,5 @@ export default function SignIn() {
                 </Box>
             </Container>
         </ThemeProvider>
-
-
     );
-
 }
