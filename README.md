@@ -1,3 +1,3 @@
 # Phi
 
-This will an test application 
+This is an api and interface test.
